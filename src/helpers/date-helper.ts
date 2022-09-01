@@ -76,7 +76,7 @@ export const ganttDateRange = (
 ) => {
   let newStartDate: Date = tasks[0].start;
   let newEndDate: Date = tasks[0].start;
-  for (const task of tasks) {
+  for (const task of tasks.filter(t => !t.isDisabled)) {
     if (task.start < newStartDate) {
       newStartDate = task.start;
     }
