@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { BarTask } from "../../types/bar-task";
 import { Task } from "../../types/public-types";
 
@@ -9,7 +9,6 @@ export type TaskListProps = {
   fontSize: string;
   rowHeight: number;
   ganttHeight: number;
-  scrollY: number;
   locale: string;
   tasks: Task[];
   taskListRef: React.RefObject<HTMLDivElement>;
@@ -42,7 +41,6 @@ export const TaskList: React.FC<TaskListProps> = ({
   fontSize,
   rowWidth,
   rowHeight,
-  scrollY,
   tasks,
   selectedTask,
   setSelectedTask,
@@ -55,11 +53,6 @@ export const TaskList: React.FC<TaskListProps> = ({
   TaskListTable,
 }) => {
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (horizontalContainerRef.current) {
-      horizontalContainerRef.current.scrollTop = scrollY;
-    }
-  }, [scrollY]);
 
   const headerProps = {
     headerHeight,

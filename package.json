@@ -62,5 +62,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "react-indiana-drag-scroll": "^2.2.0"
+  }
 }

@@ -12,8 +12,6 @@ export type TooltipProps = {
   svgWidth: number;
   headerHeight: number;
   taskListWidth: number;
-  scrollX: number;
-  scrollY: number;
   rowHeight: number;
   fontSize: string;
   fontFamily: string;
@@ -29,8 +27,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
   rtl,
   svgContainerHeight,
   svgContainerWidth,
-  scrollX,
-  scrollY,
   arrowIndent,
   fontSize,
   fontFamily,
@@ -46,12 +42,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
       const tooltipHeight = tooltipRef.current.offsetHeight * 1.1;
       const tooltipWidth = tooltipRef.current.offsetWidth * 1.1;
 
-      let newRelatedY = task.index * rowHeight - scrollY + headerHeight;
+      let newRelatedY = task.index * rowHeight + headerHeight;
       let newRelatedX: number;
       if (rtl) {
-        newRelatedX = task.x1 - arrowIndent * 1.5 - tooltipWidth - scrollX;
+        newRelatedX = task.x1 - arrowIndent * 1.5 - tooltipWidth;
         if (newRelatedX < 0) {
-          newRelatedX = task.x2 + arrowIndent * 1.5 - scrollX;
+          newRelatedX = task.x2 + arrowIndent * 1.5;
         }
         const tooltipLeftmostPoint = tooltipWidth + newRelatedX;
         if (tooltipLeftmostPoint > svgContainerWidth) {
@@ -59,7 +55,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
           newRelatedY += rowHeight;
         }
       } else {
-        newRelatedX = task.x2 + arrowIndent * 1.5 + taskListWidth - scrollX;
+        newRelatedX = task.x2 + arrowIndent * 1.5 + taskListWidth;
         const tooltipLeftmostPoint = tooltipWidth + newRelatedX;
         const fullChartWidth = taskListWidth + svgContainerWidth;
         if (tooltipLeftmostPoint > fullChartWidth) {
@@ -67,7 +63,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
             task.x1 +
             taskListWidth -
             arrowIndent * 1.5 -
-            scrollX -
             tooltipWidth;
         }
         if (newRelatedX < taskListWidth) {
@@ -76,8 +71,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
         }
       }
 
-      const tooltipLowerPoint = tooltipHeight + newRelatedY - scrollY;
-      if (tooltipLowerPoint > svgContainerHeight - scrollY) {
+      const tooltipLowerPoint = tooltipHeight + newRelatedY;
+      if (tooltipLowerPoint > svgContainerHeight) {
         newRelatedY = svgContainerHeight - tooltipHeight;
       }
       setRelatedY(newRelatedY);
@@ -87,8 +82,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
     tooltipRef,
     task,
     arrowIndent,
-    scrollX,
-    scrollY,
     headerHeight,
     taskListWidth,
     rowHeight,
