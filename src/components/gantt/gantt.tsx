@@ -73,9 +73,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     undefined
   );
 
-  const [taskListWidth, setTaskListWidth] = useState(0);
-  const [svgContainerWidth, setSvgContainerWidth] = useState(0);
-  const [svgContainerHeight, setSvgContainerHeight] = useState(ganttHeight);
   const [barTasks, setBarTasks] = useState<BarTask[]>([]);
   const [ganttEvent, setGanttEvent] = useState<GanttEvent>({
     action: "",
@@ -216,29 +213,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     }
   }, [failedTask, barTasks]);
 
-  useEffect(() => {
-    if (!listCellWidth) {
-      setTaskListWidth(0);
-    }
-    if (taskListRef.current) {
-      setTaskListWidth(taskListRef.current.offsetWidth);
-    }
-  }, [taskListRef, listCellWidth]);
-
-  useEffect(() => {
-    if (wrapperRef.current) {
-      setSvgContainerWidth(wrapperRef.current.offsetWidth - taskListWidth);
-    }
-  }, [wrapperRef, taskListWidth]);
-
-  useEffect(() => {
-    if (ganttHeight) {
-      setSvgContainerHeight(ganttHeight + headerHeight);
-    } else {
-      setSvgContainerHeight(tasks.length * rowHeight + headerHeight);
-    }
-  }, [ganttHeight, tasks, headerHeight, rowHeight]);
-
   /**
   * Task select event
   */
@@ -339,18 +313,10 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
         />
         {ganttEvent.changedTask && (
           <Tooltip
-            arrowIndent={arrowIndent}
-            rowHeight={rowHeight}
-            svgContainerHeight={svgContainerHeight}
-            svgContainerWidth={svgContainerWidth}
             fontFamily={fontFamily}
             fontSize={fontSize}
             task={ganttEvent.changedTask}
-            headerHeight={headerHeight}
-            taskListWidth={taskListWidth}
             TooltipContent={TooltipContent}
-            rtl={rtl}
-            svgWidth={svgWidth}
           />
         )}
       </div>

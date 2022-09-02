@@ -1,6 +1,6 @@
 {
   "name": "objectivity-gantt-task-react",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Interactive Gantt Chart for React with TypeScript.",
   "author": "Objectivity",
   "homepage": "https://github.com/skbtomek/objectivity-gantt-task-react",
@@ -65,6 +65,7 @@
   ],
   "dependencies": {
     "date-fns": "^2.29.2",
-    "react-indiana-drag-scroll": "^2.2.0"
+    "react-indiana-drag-scroll": "^2.2.0",
+    "react-tooltip": "^4.2.21"
   }
 }

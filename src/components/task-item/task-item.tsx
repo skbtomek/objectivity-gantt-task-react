@@ -81,7 +81,7 @@ export const TaskItem: React.FC<TaskItemProps> = props => {
   };
 
   return (
-    <g
+    <g data-tip data-for={task.id}
       onKeyDown={e => {
         switch (e.key) {
           case "Delete": {
