@@ -35,7 +35,7 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
     <g onMouseDown={onMouseDown}>
       {styles.icon ?
         <text
-          x={x}
+          x={x - 8}
           y={y + (height / 2)}
           fontWeight="bold"
           fontSize="1.5em"
