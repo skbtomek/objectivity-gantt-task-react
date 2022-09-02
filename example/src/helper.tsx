@@ -1,11 +1,13 @@
+import { startOfDay } from "date-fns";
+import { endOfDay } from "date-fns/esm";
 import { Task } from "../../dist/types/public-types";
 
 export function initTasks() {
-  const currentDate = new Date();
+  const now = new Date();
   const tasks: Task[] = [
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),
+      start: new Date(now.getFullYear(), now.getMonth(), 1),
+      end: new Date(now.getFullYear(), now.getMonth(), 15),
       name: "Some Project",
       id: "ProjectSample",
       progress: 25,
@@ -14,10 +16,10 @@ export function initTasks() {
       displayOrder: 1,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
+      start: new Date(now.getFullYear(), now.getMonth(), 1),
       end: new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
+        now.getFullYear(),
+        now.getMonth(),
         2,
         12,
         28
@@ -30,8 +32,8 @@ export function initTasks() {
       displayOrder: 2,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 4, 0, 0),
+      start: new Date(now.getFullYear(), now.getMonth(), 2),
+      end: new Date(now.getFullYear(), now.getMonth(), 4, 0, 0),
       name: "Research",
       id: "Task 1",
       progress: 25,
@@ -41,8 +43,8 @@ export function initTasks() {
       displayOrder: 3,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 4),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 8, 0, 0),
+      start: new Date(now.getFullYear(), now.getMonth(), 4),
+      end: new Date(now.getFullYear(), now.getMonth(), 8, 0, 0),
       name: "Discussion with team",
       id: "Task 2",
       progress: 10,
@@ -52,8 +54,8 @@ export function initTasks() {
       displayOrder: 4,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 8),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 9, 0, 0),
+      start: new Date(now.getFullYear(), now.getMonth(), 8),
+      end: new Date(now.getFullYear(), now.getMonth(), 9, 0, 0),
       name: "Developing",
       id: "Task 3",
       progress: 2,
@@ -63,8 +65,8 @@ export function initTasks() {
       displayOrder: 5,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 8),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 10),
+      start: new Date(now.getFullYear(), now.getMonth(), 8),
+      end: new Date(now.getFullYear(), now.getMonth(), 10),
       name: "Review",
       id: "Task 4",
       type: "task",
@@ -74,27 +76,37 @@ export function initTasks() {
       displayOrder: 6,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),
+      start: new Date(now.getFullYear(), now.getMonth(), 15),
+      end: new Date(now.getFullYear(), now.getMonth(), 15),
       name: "Release",
       id: "Task 6",
-      progress: currentDate.getMonth(),
+      progress: now.getMonth(),
       type: "milestone",
       dependencies: ["Task 4"],
       project: "ProjectSample",
       displayOrder: 7,
     },
     {
-      start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 18),
-      end: new Date(currentDate.getFullYear(), currentDate.getMonth(), 19),
+      start: startOfDay(new Date(now.getFullYear(), now.getMonth(), 18)),
+      end: endOfDay(new Date(now.getFullYear(), now.getMonth(), 18)),
+      name: "Party Project",
+      id: "partyProj",
+      progress: 0,
+      type: "project",
+      hideChildren: false      
+    },
+    {
+      start: new Date(now.getFullYear(), now.getMonth(), 18),
+      end: new Date(now.getFullYear(), now.getMonth(), 19),
       name: "Party Time",
       id: "Task 9",
       progress: 0,
       type: "task",
+      project: "partyProj"
     },
     {
-      start: new Date(currentDate.getFullYear()-1, currentDate.getMonth(), 18),
-      end: new Date(currentDate.getFullYear()-1, currentDate.getMonth(), 19),
+      start: new Date(now.getFullYear()-1, now.getMonth(), 18),
+      end: new Date(now.getFullYear()-1, now.getMonth(), 19),
       name: "Disabled task (bar not visible)",
       id: "Task 10",
       progress: 0,
