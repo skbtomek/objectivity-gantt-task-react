@@ -33,6 +33,9 @@ export function initTasks() {
       type: "task",
       project: "ProjectSample",
       displayOrder: 2,
+      styles: {
+        icon: "R"
+      }
     },
     {
       start: new Date(now.getFullYear(), now.getMonth(), 2),
@@ -105,7 +108,10 @@ export function initTasks() {
       id: "Task 9",
       progress: 0,
       type: "task",
-      project: "partyProj"
+      project: "partyProj",
+      styles: {
+        icon: "O"
+      }
     },
     {
       start: new Date(now.getFullYear()-1, now.getMonth(), 18),
