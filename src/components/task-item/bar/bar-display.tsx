@@ -23,7 +23,7 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
   width,
   barCornerRadius,
   height,
-  isSelected,  
+  isSelected,
   styles,
   onMouseDown,
 }) => {
@@ -34,7 +34,14 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
   return (
     <g onMouseDown={onMouseDown}>
       {styles.icon ?
-        <text x={x + width / 1} y={y + height / 2} alignmentBaseline="middle" fill={getBarColor()}>{styles.icon}</text> :
+        <text
+          x={x + width}
+          y={y + height / 2}
+          fontWeight="bold"
+          alignmentBaseline="middle"
+          fill={getBarColor()}>
+          {styles.icon}
+        </text> :
         <rect
           x={x}
           width={width}
