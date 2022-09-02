@@ -4,16 +4,18 @@ import { Task } from "../../dist/types/public-types";
 
 export function initTasks() {
   const now = new Date();
+  
   const tasks: Task[] = [
     {
       start: new Date(now.getFullYear(), now.getMonth(), 1),
       end: new Date(now.getFullYear(), now.getMonth(), 15),
-      name: "Some Project",
+      name: "Some Project sfdf Some Project sfdf Some Project sfdf ",
+      additionalInfo: "some additional info some additional info some additional info ",
       id: "ProjectSample",
       progress: 25,
       type: "project",
       hideChildren: false,
-      displayOrder: 1,
+      displayOrder: 1,      
     },
     {
       start: new Date(now.getFullYear(), now.getMonth(), 1),
@@ -25,6 +27,7 @@ export function initTasks() {
         28
       ),
       name: "Idea",
+      additionalInfo: "Regulation",
       id: "Task 0",
       progress: 45,
       type: "task",
@@ -112,6 +115,7 @@ export function initTasks() {
       progress: 0,
       isDisabled: true,
       type: "task",
+      hideBarTask: true
     },    
   ];
   return tasks;

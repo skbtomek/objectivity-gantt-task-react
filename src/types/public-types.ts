@@ -30,6 +30,11 @@ export interface Task {
   dependencies?: string[];
   hideChildren?: boolean;
   displayOrder?: number;
+
+  additionalInfo?: string;
+  tooltip?: string;
+
+  hideBarTask?: boolean;
 }
 
 export interface EventOption {

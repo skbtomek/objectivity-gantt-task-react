@@ -260,10 +260,12 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
     }
   };
 
+  const visibleTasks = tasks.filter(t => t.hideBarTask ? false : true);
+
   return (
     <g className="content">
       <g className="arrows" fill={arrowColor} stroke={arrowColor}>
-        {tasks.map(task => {
+        {visibleTasks.map(task => {
           return task.barChildren.map(child => {
             return (
               <Arrow
@@ -280,7 +282,7 @@ export const TaskGanttContent: React.FC<TaskGanttContentProps> = ({
         })}
       </g>
       <g className="bar" fontFamily={fontFamily} fontSize={fontSize}>
-        {tasks.map(task => {
+        {visibleTasks.map(task => {
           return (
             <TaskItem
               task={task}
