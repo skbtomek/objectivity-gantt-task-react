@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { GridProps, Grid } from "../grid/grid";
 import { CalendarProps, Calendar } from "../calendar/calendar";
 import { TaskGanttContentProps, TaskGanttContent } from "./task-gantt-content";
@@ -20,7 +20,17 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
   const ganttSVGRef = useRef<SVGSVGElement>(null);
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
   const verticalGanttContainerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef <HTMLElement>(null);
   const newBarProps = { ...barProps, svg: ganttSVGRef };
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const centeredTodayX = getCenteredTodayX(scrollContainerRef.current.offsetWidth);
+      if (centeredTodayX) {
+        scrollContainerRef.current.scrollTo(centeredTodayX, 0);
+      }
+    }
+  }, [gridProps.svgWidth]);  
 
   return (
     <div
@@ -28,7 +38,7 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
       ref={verticalGanttContainerRef}
       dir="ltr"
     >
-      <ScrollContainer hideScrollbars={false}>
+      <ScrollContainer hideScrollbars={false} innerRef={scrollContainerRef}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={gridProps.svgWidth}
@@ -61,3 +71,17 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
     </div>
   );
 };
+
+function getCenteredTodayX(scrollContainerWidth: number) {
+  const todaySvgRect = document.querySelector(".grid .gridBody .today rect");
+  const todayX = todaySvgRect?.getAttribute("x");
+  if (todayX) {
+    let centeredToday = +todayX - scrollContainerWidth / 2;
+    const todayWidth = todaySvgRect?.getAttribute("width");
+    if (todayWidth) {
+      centeredToday += +todayWidth / 2;
+    }
+    return centeredToday >= 0 ? centeredToday : undefined;
+  }
+  return undefined;
+}

@@ -169,7 +169,6 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
         return;
       }
       setCurrentViewDate(viewDate);
-      // TODO:  set inintial scroll  setScrollX(columnWidth * index);
     }
   }, [
     viewDate,

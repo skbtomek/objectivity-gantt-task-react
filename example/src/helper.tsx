@@ -92,15 +92,15 @@ export function initTasks() {
       progress: 0,
       type: "task",
     },
-    // {
-    //   start: new Date(currentDate.getFullYear()-1, currentDate.getMonth(), 18),
-    //   end: new Date(currentDate.getFullYear()-1, currentDate.getMonth(), 19),
-    //   name: "Disabled task (bar not visible)",
-    //   id: "Task 10",
-    //   progress: 0,
-    //   isDisabled: true,
-    //   type: "task",
-    // },    
+    {
+      start: new Date(currentDate.getFullYear()-1, currentDate.getMonth(), 18),
+      end: new Date(currentDate.getFullYear()-1, currentDate.getMonth(), 19),
+      name: "Disabled task (bar not visible)",
+      id: "Task 10",
+      progress: 0,
+      isDisabled: true,
+      type: "task",
+    },    
   ];
   return tasks;
 }
