@@ -1,7 +1,7 @@
 .barLabel {
-  fill: #fff;
+  fill: #3b3b3b;
   text-anchor: middle;
-  font-weight: lighter;
+  font-weight: normal;
   dominant-baseline: central;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -11,9 +11,14 @@
   pointer-events: none;
 }
 
+.barLabelTopProject {
+  font-weight: bold;
+}
+
 .barLabelOutside {
   fill: #555;
   text-anchor: start;
+  dominant-baseline: central;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;

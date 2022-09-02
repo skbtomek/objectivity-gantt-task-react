@@ -114,7 +114,7 @@ export const TaskItem: React.FC<TaskItemProps> = props => {
           y={task.y + taskHeight * 0.5}
           className={
             isTextInside
-              ? style.barLabel
+              ? task.project ? style.barLabel : style.barLabel && style.barLabelTopProject
               : style.barLabel && style.barLabelOutside
           }
           ref={textRef}
