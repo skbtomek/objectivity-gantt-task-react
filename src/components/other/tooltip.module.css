@@ -1,29 +1,4 @@
-.tooltipDefaultContainer {
-  padding: 4px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-.tooltipDefaultContainerParagraph {
-  font-size: 12px;
-  margin-bottom: 6px;
-  color: rgb(212, 208, 208);
-}
-
-.tooltipDetailsContainer {
-  position: absolute;
-  display: flex;
-  flex-shrink: 0;
-  pointer-events: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.tooltipDetailsContainerHidden {
-  visibility: hidden;
-  position: absolute;
-  display: flex;
-  pointer-events: none;
+.info {
+    margin-top: 8px;
+    margin-bottom: 8px;
 }

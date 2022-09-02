@@ -21,12 +21,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
   TooltipContent,
 }) => {
 
-  return (
-    <div>      
-      <ReactTooltip id={task.id} type='info'>
+  return (  
+      <ReactTooltip id={task.id}>
         <TooltipContent task={task} fontSize={fontSize} fontFamily={fontFamily} />
       </ReactTooltip>
-    </div>
   );
 };
 
@@ -40,21 +38,21 @@ export const StandardTooltipContent: React.FC<{
     fontFamily,
   };
   return (
-    <div className={styles.tooltipDefaultContainer} style={style}>
+    <div style={style}>
       <b style={{ fontSize: fontSize + 6 }}>{`${task.name
         }: ${task.start.getDate()}-${task.start.getMonth() + 1
         }-${task.start.getFullYear()} - ${task.end.getDate()}-${task.end.getMonth() + 1
         }-${task.end.getFullYear()}`}</b>
       {task.end.getTime() - task.start.getTime() !== 0 && (
-        <p className={styles.tooltipDefaultContainerParagraph}>{`Duration: ${~~(
+        <div className={styles.info}>{`Duration: ${~~(
           (task.end.getTime() - task.start.getTime()) /
           (1000 * 60 * 60 * 24)
-        )} day(s)`}</p>
+        )} day(s)`}</div>
       )}
 
-      <p className={styles.tooltipDefaultContainerParagraph}>
+      <div className={styles.info}>
         {!!task.progress && `Progress: ${task.progress} %`}
-      </p>
+      </div>
     </div>
   );
 };
