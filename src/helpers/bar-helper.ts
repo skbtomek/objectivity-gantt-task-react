@@ -161,9 +161,11 @@ const convertToBar = (
     x2 = taskXCoordinate(task.end, dates, columnWidth);
   }
   let typeInternal: TaskTypeInternal = task.type;
-  if ((typeInternal === "task" || typeInternal === "project") && x2 - x1 < handleWidth * 2) {
+
+  const minWidth = 2;
+  if ((typeInternal === "task" || typeInternal === "project") && x2 - x1 < minWidth) {
     typeInternal = "smalltask";
-    x2 = x1 + handleWidth * 2;
+    x2 = x1 + minWidth;
   }
 
   const [progressWidth, progressX] = progressWithByParams(
@@ -376,7 +378,7 @@ const dateByX = (
   let newDate = new Date(((x - taskX) / xStep) * timeStep + taskDate.getTime());
   newDate = new Date(
     newDate.getTime() +
-      (newDate.getTimezoneOffset() - taskDate.getTimezoneOffset()) * 60000
+    (newDate.getTimezoneOffset() - taskDate.getTimezoneOffset()) * 60000
   );
   return newDate;
 };
