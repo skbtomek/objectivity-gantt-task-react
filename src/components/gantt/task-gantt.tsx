@@ -25,7 +25,7 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
 
   useEffect(() => {
     if (scrollContainerRef.current) {
-      const centeredTodayX = getCenteredTodayX(scrollContainerRef.current.offsetWidth);
+      const centeredTodayX = getCenteredTodayX();
       if (centeredTodayX) {
         scrollContainerRef.current.scrollTo(centeredTodayX, 0);
       }
@@ -72,16 +72,16 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
   );
 };
 
-function getCenteredTodayX(scrollContainerWidth: number) {
+function getCenteredTodayX() {
   const todaySvgRect = document.querySelector(".grid .gridBody .today rect");
   const todayX = todaySvgRect?.getAttribute("x");
   if (todayX) {
-    let centeredToday = +todayX - scrollContainerWidth / 2;
+    let centeredToday = +todayX;
     const todayWidth = todaySvgRect?.getAttribute("width");
     if (todayWidth) {
       centeredToday += +todayWidth / 2;
     }
-    return centeredToday >= 0 ? centeredToday : undefined;
+    return centeredToday;
   }
   return undefined;
 }
