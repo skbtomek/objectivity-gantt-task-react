@@ -1,6 +1,6 @@
 {
   "name": "objectivity-gantt-task-react",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Interactive Gantt Chart for React with TypeScript.",
   "author": "Objectivity",
   "homepage": "https://github.com/skbtomek/objectivity-gantt-task-react",

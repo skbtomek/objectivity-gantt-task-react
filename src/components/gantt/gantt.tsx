@@ -241,7 +241,8 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     const selectedTask = barTasks.find(t => t.id === taskId);
     if (selectedTask) {
       const scrollContainer = document.querySelector("#task-gantt-vertical-container .indiana-scroll-container");
-      scrollContainer?.scrollTo(selectedTask.x1, 0);
+      const scrollX = selectedTask.x1 - 30;
+      scrollContainer?.scrollTo(scrollX < 0 ? 0 : scrollX, 0);
     }
   }
 
