@@ -42,7 +42,7 @@
   text-overflow: ellipsis;
 }
 
-.taskListName-header {  
+.taskListName-header {
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -72,4 +72,12 @@
   padding: 0.15rem 0.2rem 0rem 0.2rem;
   user-select: none;
   display: flex;
+}
+
+.taskListScrollTo {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  font-size: x-large;
+  font-weight: lighter;
 }

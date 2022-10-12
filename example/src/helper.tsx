@@ -4,6 +4,23 @@ export function initTasks() {
  
   const tasks: Task[] = [
     {
+      "id": "4475452129699490",
+      "name": "Ullamco est ",
+      "additionalInfo": "Ad ullamco duis ipsum Lorem.",
+      "tooltip": "Occaecat commodo ",
+      "start": new Date("2022-01-24T22:00:00.000Z"),
+      "end": new Date("2022-12-22T21:59:59.999Z"),
+      "type": "project",
+      "hideChildren": true,
+      "progress": 100,
+      "styles": {
+        "backgroundColor": "#F8D87D",
+        "backgroundSelectedColor": "#F4C53C",
+        "progressColor": "#F8D87D",
+        "progressSelectedColor": "#F4C53C"
+      }
+    },
+    {
       "id": "44754521296994505",
       "name": "Ullamco est sunt anim dolor nostrud labore. Est tempor id ullamco sit fugiat proident magna est dolor.Tempor est tempor sint fugiatś",
       "additionalInfo": "Ad ullamco duis ipsum Lorem.",

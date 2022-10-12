@@ -16,6 +16,7 @@ export type TaskListProps = {
   selectedTask: BarTask | undefined;
   setSelectedTask: (task: string) => void;
   onExpanderClick: (task: Task) => void;
+  scrollToSelectedTaskOnList: (taskId: string) => void;
   TaskListHeader: React.FC<{
     headerHeight: number;
     rowWidth: string;
@@ -32,6 +33,7 @@ export type TaskListProps = {
     selectedTaskId: string;
     setSelectedTask: (taskId: string) => void;
     onExpanderClick: (task: Task) => void;
+    scrollToSelectedTaskOnList: (taskId: string) => void;
   }>;
 };
 
@@ -45,6 +47,7 @@ export const TaskList: React.FC<TaskListProps> = ({
   selectedTask,
   setSelectedTask,
   onExpanderClick,
+  scrollToSelectedTaskOnList,
   locale,
   ganttHeight,
   taskListRef,
@@ -71,6 +74,7 @@ export const TaskList: React.FC<TaskListProps> = ({
     selectedTaskId: selectedTaskId,
     setSelectedTask,
     onExpanderClick,
+    scrollToSelectedTaskOnList
   };
 
   return (

@@ -236,6 +236,15 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
       onExpanderClick({ ...task, hideChildren: !task.hideChildren });
     }
   };
+
+  const handleScrollToSelectedTask = (taskId: string) => {
+    const selectedTask = barTasks.find(t => t.id === taskId);
+    if (selectedTask) {
+      const scrollContainer = document.querySelector("#task-gantt-vertical-container .indiana-scroll-container");
+      scrollContainer?.scrollTo(selectedTask.x1, 0);
+    }
+  }
+
   const gridProps: GridProps = {
     columnWidth,
     svgWidth,
@@ -294,6 +303,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     taskListRef,
     setSelectedTask: handleSelectedTask,
     onExpanderClick: handleExpanderClick,
+    scrollToSelectedTaskOnList: handleScrollToSelectedTask,
     TaskListHeader,
     TaskListTable,
   };

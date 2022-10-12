@@ -12,7 +12,8 @@ export const TaskListTable: React.FC<{
     selectedTaskId: string;
     setSelectedTask: (taskId: string) => void;
     onExpanderClick: (task: Task) => void;
-}> = ({ rowHeight, tasks, onExpanderClick }) => {
+    scrollToSelectedTaskOnList: (taskId: string) => void;    
+}> = ({ rowHeight, tasks, onExpanderClick, scrollToSelectedTaskOnList }) => {
     return (
         <div className="taskListWrapper">
             {tasks.map(t => {
@@ -33,6 +34,7 @@ export const TaskListTable: React.FC<{
                             task={t}
                             expanderSymbol={expanderSymbol}
                             onExpanderClick={onExpanderClick}
+                            scrollToSelectedTaskOnList={scrollToSelectedTaskOnList}
                         />
                     );
                 } else if (isParentalGroup) {
@@ -57,21 +59,23 @@ type RegulationProps = {
     task: Task;
     expanderSymbol: string;
     onExpanderClick: (task: Task) => void;
+    scrollToSelectedTaskOnList: (taskId: string) => void;
 };
 
-function Regulation({ rowHeight, task, expanderSymbol, onExpanderClick }: RegulationProps) {
+function Regulation({ rowHeight, task, expanderSymbol, onExpanderClick, scrollToSelectedTaskOnList }: RegulationProps) {
     return (
         <div className="taskListTableRow" style={{ height: rowHeight }} key={`${task.id}row`}>
-            <div className="taskListCell taskListCell--regulation" onClick={() => onExpanderClick(task)}>
-                <div className="taskListName-header" title={task.name}>
-                    {task.tooltip ? `${task.name} ⓘ` : task.name}
-                </div>
+            <div className="taskListCell taskListCell--regulation">
+                <div className="taskListName-header" title={task.name} onClick={() => onExpanderClick(task)}>{task.name}</div>
                 <div className="taskListName" title={task.tooltip}>
-                    <div className={expanderSymbol ? "taskListExpander" : "taskListEmptyExpander"}>
+                    <div className={expanderSymbol ? "taskListExpander" : "taskListEmptyExpander"} onClick={() => onExpanderClick(task)}>
                         {expanderSymbol}
                     </div>
-                    <div className="taskListAdditionalInfo">
+                    <div className="taskListAdditionalInfo" onClick={() => onExpanderClick(task)}>
                         {task.tooltip ? `${task.additionalInfo} ⓘ` : task.additionalInfo}
+                    </div>
+                    <div className="taskListScrollTo" onClick={() => scrollToSelectedTaskOnList(task.id)}>
+                        <span>⇠</span>
                     </div>
                 </div>
             </div>

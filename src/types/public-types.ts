@@ -142,6 +142,7 @@ export interface StylingOption {
      */
     setSelectedTask: (taskId: string) => void;
     onExpanderClick: (task: Task) => void;
+    scrollToSelectedTaskOnList: (taskId: string) => void;
   }>;
 }
 
