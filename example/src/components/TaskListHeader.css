@@ -1,0 +1,10 @@
+.task-list-header {
+  background: #e5e5e5;;  
+  border-bottom: #e6e4e4 1px solid;
+  border-top: #e6e4e4 1px solid;
+  border-left: #e6e4e4 1px solid;
+}
+
+.task-list-header__separator {
+  height: 12px;
+}
