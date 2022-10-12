@@ -298,7 +298,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     TaskListTable,
   };
   return (
-    <div>
+    <div id="gantt-main-container">
       <div
         className={styles.wrapper}
         tabIndex={0}
