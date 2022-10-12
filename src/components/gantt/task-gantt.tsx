@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { GridProps, Grid } from "../grid/grid";
 import { CalendarProps, Calendar } from "../calendar/calendar";
 import { TaskGanttContentProps, TaskGanttContent } from "./task-gantt-content";
@@ -23,7 +23,7 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
   const scrollContainerRef = useRef <HTMLElement>(null);
   const newBarProps = { ...barProps, svg: ganttSVGRef };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (scrollContainerRef.current) {
       const centeredTodayX = getCenteredTodayX();
       if (centeredTodayX) {
